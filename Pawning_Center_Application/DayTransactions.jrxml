@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f13572d-c70a-4692-b5e3-571a6a1ca94e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="para_user_id" class="java.lang.String"/>
+	<parameter name="para_date" class="java.lang.String"/>
+	<parameter name="para_sum_of_credit" class="java.lang.String"/>
+	<parameter name="para_sum_of_debit" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from transaction where user_id=$P{para_user_id} and date=$P{para_date};]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="ac_number" class="java.lang.Integer"/>
+	<field name="date" class="java.sql.Date"/>
+	<field name="time" class="java.lang.String"/>
+	<field name="user_id" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="credit" class="java.lang.Double"/>
+	<field name="debit" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image>
+				<reportElement uuid="8b1e38b4-8a3e-43d4-ad7a-dba9ea5f6fa4" x="0" y="0" width="555" height="110"/>
+				<imageExpression><![CDATA["E:\\My Semester 5\\Software Engineering Project\\Project\\Pawning_Center_Application\\src\\Images\\cash.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="17f0be70-eff4-4078-80a8-9056f2989ded" x="314" y="16" width="225" height="80"/>
+				<textElement>
+					<font fontName="Monospaced" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RASCO       Pawning Center]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1213738f-67e5-4c93-b847-1aa3de9ab974" x="18" y="12" width="56" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teller ID : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="392bfee7-c3f0-43e2-adb0-b6b54ecdfb60" x="95" y="12" width="137" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_user_id}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="e85326ac-8bd8-488f-adb7-753fbbfe5e3d" x="425" y="12" width="114" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6e9bdf15-7b35-4467-b273-e0d6d925b12d" x="95" y="28" width="61" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Account No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d9f45bfd-07e7-4474-8083-9eef50acd4c7" x="18" y="28" width="77" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transaction ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="385832a4-54eb-4a65-91fb-198dac9b0b27" x="175" y="28" width="44" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7db5f6db-e1ac-4b0d-8fbf-a7370a31e736" x="232" y="28" width="53" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc61d01d-d056-4bf6-9a73-593c993b9a91" x="295" y="28" width="85" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f339b536-c8cc-45ba-88af-0787bf9801a7" x="396" y="28" width="62" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Credit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bf67bec2-cf7f-47a2-a01e-014b8eeea09f" x="466" y="28" width="73" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Debit]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement uuid="4077fc09-991a-4a6e-b698-455d2392a592" x="18" y="22" width="56" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6c6d701f-0434-4877-ac85-5c114ceb0c1e" x="95" y="22" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ac_number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7bacad00-67d1-4fab-bdcd-e26a817c81cf" x="175" y="22" width="57" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7ad27bb0-f967-4ea4-9180-34a7e303c14e" x="232" y="22" width="63" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="31f8e0b0-39a7-4944-b248-2b6e131cec58" x="295" y="22" width="101" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a425d7a1-07a4-404f-bed9-2d4c4a48686f" x="396" y="22" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="787e232b-cb23-4c06-91de-e686c577dfcd" x="466" y="22" width="73" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{debit}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement uuid="652691a8-8d44-43df-b5e0-6d3d602aef9c" x="195" y="20" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="4e010461-0811-4e04-8b10-b18b282c57b2" x="275" y="20" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e839e304-c63b-4172-a5f9-6883360bf390" x="18" y="11" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sum of Credits  =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0884195e-164e-4ae5-8a3e-17b65b48728f" x="295" y="11" width="101" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sum of Debits  =]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="056d14f6-f7cd-45d8-9ec2-ef4baaaa010a" x="396" y="11" width="143" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_sum_of_debit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="89389674-ce44-4c0b-86d2-ed93ab730cba" x="118" y="11" width="167" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_sum_of_credit}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
